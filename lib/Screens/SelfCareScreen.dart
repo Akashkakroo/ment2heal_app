@@ -13,77 +13,8 @@ class SelfCare extends StatefulWidget {
 }
 
 class _SelfCareState extends State<SelfCare> {
-  bool isTrue = false;
-  checkHasData() async {
-    var ds = await FirebaseFirestore.instance
-        .collection("Affirmaitions")
-        .where('id', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-        .get();
-
-    this.setState(() {
-      if (ds.size > 1) {
-        isTrue = true;
-      }
-    });
-    print(ds.size);
-  }
-
-  @override
-  void initState() {
-    checkHasData();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder(
-          future: FirebaseFirestore.instance
-              .collection('Affirmaitions')
-              .where('id', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-              .get(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            return isTrue
-                ? ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: (snapshot.data! as dynamic).docs.length,
-                    itemBuilder: (context, index) {
-                      DocumentSnapshot snap =
-                          (snapshot.data! as dynamic).docs[index];
-
-                      return SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Padding(
-                            padding: const EdgeInsets.all(1.0),
-                            child: Row(
-                              children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      height: 20,
-                                      width: 20,
-                                      color: Colors.black,
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    })
-                : Container(
-                    child: Column(
-                      children: [],
-                    ),
-                  );
-          }),
-    );
+    return Scaffold();
   }
 }

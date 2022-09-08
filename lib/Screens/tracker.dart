@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ment2heal/Screens/fitnessTracker.dart';
 import 'package:ment2heal/Screens/habittrackercommon.dart';
-import 'package:ment2heal/Screens/subscreens/steps_tracker.dart';
+
 import 'package:ment2heal/widgets/track_main_container.dart';
 
 import '../utils/hexcolor.dart';
+import 'caloriesTracker.dart';
 
 class Tracker extends StatelessWidget {
   const Tracker({Key? key}) : super(key: key);
@@ -17,13 +19,31 @@ class Tracker extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          trackerContainer(
-              "Track your fitness level", "assets/footprint.png", '#A6D4FD'),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => StepsTracker(),
+                ),
+              );
+            },
+            child: trackerContainer(
+                "Track your fitness level", "assets/footprint.png", '#A6D4FD'),
+          ),
           const SizedBox(
             height: 15,
           ),
-          trackerContainer(
-              "Track your eating habits", "assets/eating.png", '#FFC855'),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => CalorieTracker(),
+                ),
+              );
+            },
+            child: trackerContainer(
+                "Track your eating habits", "assets/eating.png", '#FFC855'),
+          ),
           const SizedBox(
             height: 15,
           ),

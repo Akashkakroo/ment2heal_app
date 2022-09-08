@@ -135,9 +135,11 @@ class _AddHabitState extends State<AddHabit> {
                         height: 40,
                         width: 110,
                         decoration: BoxDecoration(
-                          color: HexColor("#E1E6E9"),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
+                            color: HexColor("#E1E6E9"),
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(
+                              style: BorderStyle.solid,
+                            )),
                       ),
                       const SizedBox(
                         width: 5,
